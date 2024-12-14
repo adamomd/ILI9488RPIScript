@@ -20,12 +20,6 @@ if [[ "$user_input" != "Y" && "$user_input" != "y" ]]; then
     exit 0
 fi
 
-# Ensure locale settings
-export LANGUAGE="en_GB.UTF-8"
-export LC_ALL="en_GB.UTF-8"
-export LC_CTYPE="en_GB.UTF-8"
-export LANG="en_GB.UTF-8"
-
 # Begin setup
 echo "Starting TFT setup..."
 
