@@ -1,6 +1,10 @@
 
 # ILI9488 Raspberry Pi Setup Script
 
+Works only with Raspberry Pi OS Bookworm!!!
+This version is prepared for installing the SPI display on a RPi Zero / Zero W
+The user used to run the script has to be named "pi"
+
 This repository contains a script - `setup_ili9488.sh` - designed to simplify the setup of a 4" ILI9488 TFT screen commonly sold on AliExpress. This script configures the Raspberry Pi 4B to work seamlessly with the ILI9488 TFT display using the SPI interface.
 
 To achieve this, the script integrates the configuration and logic provided by the [fbcp-ili9341 repository](https://github.com/juj/fbcp-ili9341.git), which is a game changer for setting up the framebuffer for SPI-based TFT displays. Make sure to clone and compile the `fbcp-ili9341` repository as part of the process.
@@ -30,8 +34,8 @@ Connect your ILI9488 TFT screen to the Raspberry Pi 4B as follows:
 | **VDD**     | Power (VCC)           | 5V or 3.3V           | Pin 2 or Pin 1 |
 | **GND**     | Ground                | Ground               | Pin 6          |
 | **CS**      | Chip Select (SPI)     | GPIO 8               | Pin 24         |
-| **RST**     | Reset                 | GPIO 17              | Pin 11         |
-| **D/C**     | Data/Command (SPI)    | GPIO 25              | Pin 22         |
+| **RST**     | Reset                 | GPIO 25              | Pin 22         |
+| **D/C**     | Data/Command (SPI)    | GPIO 24              | Pin 18         |
 | **SDI**     | Serial Data In (MOSI) | GPIO 10              | Pin 19         |
 | **SCK**     | Serial Clock (SPI)    | GPIO 11              | Pin 23         |
 | **BL**      | Backlight             | 5V or GPIO 27        | Pin 2 or Pin 13 |
@@ -59,7 +63,7 @@ sudo apt install -y git
 ### 2️⃣ Download the Setup Script
 Clone this repository to your Raspberry Pi:
 ```bash
-git clone https://github.com/adamomd/ILI9488RPIScript.git
+git clone https://github.com/grimmorium/ILI9488RPIScript_RaspberryPi_Zero.git
 ```
 
 ### 3️⃣ Run the Setup Script
@@ -105,18 +109,25 @@ sudo ./setup_ili9488.sh
 
 ## 🖱️ Just Copy and Paste
 
+run 
+```bash
+sudo raspi-config
+```
+and enable I2C
+
 Copy and paste the commands below sequentially to prepare your Raspberry Pi, download the setup script, and execute it:
 
 ```bash
 # Update and install git
 sudo apt update
 sudo apt install -y git
+#sudo apt-get install --reinstall libraspberrypi0 libraspberrypi-dev libraspberrypi-doc libraspberrypi-bin
 
 # Clone the setup script repository
-git clone https://github.com/adamomd/ILI9488RPIScript.git
+git clone https://github.com/grimmorium/ILI9488RPIScript_RaspberryPi_Zero.git
 
 # Navigate to the script's directory
-cd ILI9488RPIScript
+cd ILI9488RPIScript_RaspberryPi_Zero
 
 # Make the script executable and run it
 chmod +x setup_ili9488.sh
@@ -125,10 +136,3 @@ sudo ./setup_ili9488.sh
 
 ---
 
-
-
-## 🌟 Feedback and Suggestions
-We value your feedback! If you encounter issues or have suggestions, feel free to open an issue or contribute to the repository.
-
-Happy Hacking!  
-Script and Guide by AdamoMD
